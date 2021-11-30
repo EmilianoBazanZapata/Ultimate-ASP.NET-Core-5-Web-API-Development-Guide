@@ -16,6 +16,8 @@ using Api.Data;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Api.Configurations;
+using Api.IRepository;
+using Api.Repository;
 
 namespace Api
 {
@@ -44,13 +46,17 @@ namespace Api
             });
             //agrego la referencia del automapper Initializer por inyeccion de dependencias
             services.AddAutoMapper(typeof(Mapperinitializer));
+            //unit of work
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(op =>
+            op.SerializerSettings.ReferenceLoopHandling = 
+            Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,6 +81,10 @@ namespace Api
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
                 endpoints.MapControllers();
             });
         }

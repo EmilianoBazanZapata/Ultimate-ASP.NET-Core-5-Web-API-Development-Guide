@@ -8,9 +8,9 @@ namespace Api.IRepository
 {
     public interface IUnitOfWork : IDisposable
     {
-        IGenericRepository<Country> Countries{get;set;}
+        IGenericRepository<Country> Countries{get;}
 
-        IGenericRepository<Hotel> Hotels{get;set;}
+        IGenericRepository<Hotel> Hotels{get;}
 
         Task Save();
     }

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "TuyHDVMiVcON6LpUOdJWH8WBZyeZWR2/nGF/cXp2H5nZKlKdRhI4a/sUyHcmhNfFbm30BK+HW7tQeKwDVZ8gPw==",
+  "dgSpecHash": "9cnlyRyrDpdcK8k6VK3YQ2y7K7iWvaN/zy4ayjdJxchiYItLW29FboxCO7XEADrWDKvP15u9gRsXHtnnQolSwQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Emiliano\\Desktop\\Ultimate ASP.NET Core 5 Web API Development Guide\\Ultimate-ASP.NET-Core-5-Web-API-Development-Guide\\Api\\Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Emiliano\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Emiliano\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\5.0.12\\microsoft.aspnetcore.authentication.openidconnect.5.0.12.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -91,7 +93,7 @@
     "C:\\Users\\Emiliano\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\system.private.uri\\4.3.2\\system.private.uri.4.3.2.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\Emiliano\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\Emiliano\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

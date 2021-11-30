@@ -14,6 +14,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Api.Data;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using Api.Configurations;
 
 namespace Api
 {
@@ -40,6 +42,8 @@ namespace Api
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });
+            //agrego la referencia del automapper Initializer por inyeccion de dependencias
+            services.AddAutoMapper(typeof(Mapperinitializer));
 
             services.AddSwaggerGen(c =>
             {

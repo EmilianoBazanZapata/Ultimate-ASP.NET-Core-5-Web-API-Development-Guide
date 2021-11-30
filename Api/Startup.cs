@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Api.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api
 {
@@ -27,20 +29,24 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers();
+            //agrego el contexto de la base de datos y obtengo la cade de conexion desde el appsetings
+            services.AddDbContext<DataBaseContext>(options =>
+              options.UseSqlServer(Configuration.GetConnectionString("DB")));
             //agrego la politica del cors
-            services.AddCors(o => {
-                o.AddPolicy("AllowAll",builder => 
-                builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader());
+            services.AddCors(o =>
+            {
+                o.AddPolicy("AllowAll", builder =>
+                 builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
             });
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

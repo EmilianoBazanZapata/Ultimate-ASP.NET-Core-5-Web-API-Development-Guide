@@ -18,6 +18,7 @@ using AutoMapper;
 using Api.Configurations;
 using Api.IRepository;
 using Api.Repository;
+using Microsoft.AspNetCore.Identity;
 
 namespace Api
 {
@@ -36,6 +37,9 @@ namespace Api
             //agrego el contexto de la base de datos y obtengo la cade de conexion desde el appsetings
             services.AddDbContext<DataBaseContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DB")));
+
+            services.AddAuthentication();
+            services.ConfigureIdentity();
             //agrego la politica del cors
             services.AddCors(o =>
             {

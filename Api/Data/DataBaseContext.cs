@@ -1,12 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Configurations.Entities;
 
 namespace Api.Data
 {
-    public class DataBaseContext : DbContext
+    public class DataBaseContext : IdentityDbContext<ApiUser>
     {
         public DataBaseContext(DbContextOptions options) : base(options)
         {
@@ -19,52 +21,11 @@ namespace Api.Data
         //datos que gregare en la base de datos desde una migracion
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Country>().HasData(
-                new Country
-                {
-                    Id = 1,
-                    Name = "Jamaica",
-                    ShortName = "JM"
-                },
-                new Country
-                {
-                    Id = 2,
-                    Name = "Bahamas",
-                    ShortName = "BS"
-                },
-                new Country
-                {
-                    Id = 3,
-                    Name = "Cayman Island",
-                    ShortName = "CI"
-                }
-            );
-            builder.Entity<Hotel>().HasData(
-                new Hotel
-                {
-                    Id = 1,
-                    Name = "Sandals Resort and Spa",
-                    Address = "Negril",
-                    CountryId = 1,
-                    Rating = 4.5
-                },
-                new Hotel
-                {
-                    Id = 2,
-                    Name = "Comfort Suites",
-                    Address = "George Town",
-                    CountryId = 2,
-                    Rating = 5
-                },
-                new Hotel
-                {
-                    Id = 3,
-                    Name = "Grand Palldium",
-                    Address = "Nassua",
-                    CountryId = 3,
-                    Rating = 2
-                }
-            );
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfiguration(new HotelConfiguration());
+            builder.ApplyConfiguration(new CountryConfiguration());
+            builder.ApplyConfiguration(new RoleConfiguration());
         }
     }
 }

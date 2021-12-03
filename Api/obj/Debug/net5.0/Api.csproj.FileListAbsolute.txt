@@ -75,3 +75,8 @@ C:\Users\Emiliano\Desktop\Ultimate ASP.NET Core 5 Web API Development Guide\Ulti
 C:\Users\Emiliano\Desktop\Ultimate ASP.NET Core 5 Web API Development Guide\Ultimate-ASP.NET-Core-5-Web-API-Development-Guide\Api\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Emiliano\Desktop\Ultimate ASP.NET Core 5 Web API Development Guide\Ultimate-ASP.NET-Core-5-Web-API-Development-Guide\Api\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Emiliano\Desktop\Ultimate ASP.NET Core 5 Web API Development Guide\Ultimate-ASP.NET-Core-5-Web-API-Development-Guide\Api\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\Emiliano\Desktop\Ultimate ASP.NET Core 5 Web API Development Guide\Ultimate-ASP.NET-Core-5-Web-API-Development-Guide\Api\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Emiliano\Desktop\Ultimate ASP.NET Core 5 Web API Development Guide\Ultimate-ASP.NET-Core-5-Web-API-Development-Guide\Api\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Emiliano\Desktop\Ultimate ASP.NET Core 5 Web API Development Guide\Ultimate-ASP.NET-Core-5-Web-API-Development-Guide\Api\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Emiliano\Desktop\Ultimate ASP.NET Core 5 Web API Development Guide\Ultimate-ASP.NET-Core-5-Web-API-Development-Guide\Api\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Emiliano\Desktop\Ultimate ASP.NET Core 5 Web API Development Guide\Ultimate-ASP.NET-Core-5-Web-API-Development-Guide\Api\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll

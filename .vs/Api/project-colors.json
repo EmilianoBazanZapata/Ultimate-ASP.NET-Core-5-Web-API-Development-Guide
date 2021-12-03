@@ -5,6 +5,11 @@
       "ProjectGuid": "082f65cf-0e01-4b48-b0ab-ce2062acd949",
       "DisplayName": "Api",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 1

@@ -19,6 +19,7 @@ using Api.Configurations;
 using Api.IRepository;
 using Api.Repository;
 using Microsoft.AspNetCore.Identity;
+using Api.Services;
 
 namespace Api
 {
@@ -38,8 +39,11 @@ namespace Api
             services.AddDbContext<DataBaseContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DB")));
 
+            //ExtensionServices
             services.AddAuthentication();
             services.ConfigureIdentity();
+            services.ConfigureJWT(Configuration);
+
             //agrego la politica del cors
             services.AddCors(o =>
             {
@@ -52,6 +56,8 @@ namespace Api
             services.AddAutoMapper(typeof(Mapperinitializer));
             //unit of work
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            //AuthManager
+            services.AddScoped<IAuthManager, AuthManager>();
 
             services.AddSwaggerGen(c =>
             {

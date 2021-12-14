@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Data;
 using Api.IRepository;
 using Api.Models;
 using AutoMapper;
@@ -46,7 +47,7 @@ namespace Api.Controllers
             }
         }
         [Authorize]
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}", Name = "GetHotelById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task <IActionResult> GetHotelById(int id)
@@ -61,6 +62,33 @@ namespace Api.Controllers
             {
                 
                 _logger.LogError($"Something Went Wrong in the {nameof(GetHotelById)}",ex);
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
+        }
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> AddHotel([FromBody] CreateHotelDTO hotelDTO)
+        {
+            if (!ModelState.IsValid) 
+            {
+                _logger.LogError($"Invalid POST attempt in{nameof(AddHotel)}");
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var hotel = _mapper.Map<Hotel>(hotelDTO);
+                await _unitofwork.Hotels.Insert(hotel);
+                await _unitofwork.Save();
+
+                return CreatedAtRoute("GetHotelById", new { id = hotel.Id },hotel);
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError($"Something Went Wrong in the {nameof(AddHotel)}", ex);
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
         }

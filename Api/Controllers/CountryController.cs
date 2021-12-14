@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Data;
 using Api.IRepository;
 using Api.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -44,7 +46,7 @@ namespace Api.Controllers
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
         }
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}",Name = "GetCountryById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetCountryById(int id)
@@ -58,6 +60,33 @@ namespace Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Somehing Went Wrong in the {nameof(GetCountryById)}", ex);
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
+        }
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> AddCountry([FromBody] CreateCountryDTO countryDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError($"Invalid POST attempt in{nameof(AddCountry)}");
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var country = _mapper.Map<Country>(countryDTO);
+                await _unitofwork.Countries.Insert(country);
+                await _unitofwork.Save();
+
+                return CreatedAtRoute("GetCountryById", new { id = country.Id }, country);
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError($"Something Went Wrong in the {nameof(AddCountry)}", ex);
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
         }

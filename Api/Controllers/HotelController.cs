@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Api.IRepository;
 using Api.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -44,6 +45,7 @@ namespace Api.Controllers
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
         }
+        [Authorize]
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

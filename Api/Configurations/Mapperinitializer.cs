@@ -14,10 +14,8 @@ namespace Api.Configurations
         {
             CreateMap<Country, CountryDTO>().ReverseMap();
             CreateMap<Country, CreateCountryDTO>().ReverseMap();
-
             CreateMap<Hotel, HotelDTO>().ReverseMap();
             CreateMap<Country, CreateHotelDTO>().ReverseMap();
-
             CreateMap<ApiUser, UserDTO>().ReverseMap();
         }
     }

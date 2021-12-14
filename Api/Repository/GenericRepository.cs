@@ -75,7 +75,7 @@ namespace Api.Repository
             await _db.AddRangeAsync(entities);
         }
 
-        public void Updat(T entity)
+        public void Update(T entity)
         {
             _db.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;

@@ -24,6 +24,6 @@ namespace Api.IRepository
         
         void DeleteRange(IEnumerable<T> entities);
 
-        void Updat(T entity);
+        void Update(T entity);
     }
 }

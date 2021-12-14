@@ -85,8 +85,40 @@ namespace Api.Controllers
             }
             catch (Exception ex)
             {
-
                 _logger.LogError($"Something Went Wrong in the {nameof(AddCountry)}", ex);
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
+        }
+        
+        [Authorize(Roles = "Administrator")]
+        [HttpPut("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateCountry(int id, [FromBody] UpdateCountryDTO countryDTO)
+        {
+            if (!ModelState.IsValid || id < 1)
+            {
+                _logger.LogError($"Invalid UPDATE attempt in {nameof(UpdateCountry)}");
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var country = await _unitofwork.Countries.Get(q => q.Id == id);
+                if (country == null)
+                {
+                    _logger.LogError($"Invalid UPDATE attempt in {nameof(UpdateCountry)}");
+                    return BadRequest("Submitted data is Invalid");
+                }
+                _mapper.Map(countryDTO, country);
+                _unitofwork.Countries.Update(country);
+                await _unitofwork.Save();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError($"Something Went Wrong in the {nameof(UpdateCountry)}", ex);
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
         }

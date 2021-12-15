@@ -27,7 +27,7 @@ namespace Api.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -120,8 +120,38 @@ namespace Api.Controllers
             }
             catch (Exception ex)
             {
-
                 _logger.LogError($"Something Went Wrong in the {nameof(UpdateHotel)}", ex);
+                return StatusCode(500, "Internal Server Error. Please Try Again Later.");
+            }
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpDelete("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteHotel(int id)
+        {
+            if (id < 1)
+            {
+                _logger.LogError($"Invalid DELETE attempt in {nameof(DeleteHotel)}");
+                return BadRequest();
+            }
+            try
+            {
+                var hotel = await _unitofwork.Hotels.Get(q => q.Id == id);
+                if (hotel == null)
+                {
+                    return BadRequest("Submmited data is Invalid");
+                }
+                await _unitofwork.Hotels.Delete(id);
+                await _unitofwork.Save();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError($"Something Went Wrong in the {nameof(DeleteHotel)}", ex);
                 return StatusCode(500, "Internal Server Error. Please Try Again Later.");
             }
         }

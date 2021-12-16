@@ -33,11 +33,11 @@ namespace Api.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetCountries()
+        public async Task<IActionResult> GetCountries([FromQuery] RequestParams request)
         {
             try
             {
-                var Countries = await _unitofwork.Countries.GetAll();
+                var Countries = await _unitofwork.Countries.GetPagedList(request);
                 var results = _mapper.Map<IList<CountryDTO>>(Countries);
                 return Ok(results);
             }

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "+UOHZsd6/oEuZCpJ/Dg90Jcas97UslLMBXgh2MNv9pM5oq6yHq8P6zQdn986P9Olt52hzdnewoSbSeFOhy60vQ==",
+  "dgSpecHash": "DIUwIcAyvp+tFf92C6lzZOtmQerf5W70E77eN5w+QjLikeIC3N6SJ3nONMJCyO9d/xqgU84B3Yy5HdfjLJTNLw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Emiliano\\Desktop\\Ultimate ASP.NET Core 5 Web API Development Guide\\Ultimate-ASP.NET-Core-5-Web-API-Development-Guide\\Api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Emiliano\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Emiliano\\.nuget\\packages\\jetbrains.annotations\\2021.1.0\\jetbrains.annotations.2021.1.0.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.12\\microsoft.aspnetcore.authentication.jwtbearer.5.0.12.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\5.0.12\\microsoft.aspnetcore.authentication.openidconnect.5.0.12.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.12\\microsoft.aspnetcore.cryptography.internal.5.0.12.nupkg.sha512",
@@ -137,7 +138,9 @@
     "C:\\Users\\Emiliano\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Emiliano\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Emiliano\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\Emiliano\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\Emiliano\\.nuget\\packages\\x.pagedlist\\8.1.0\\x.pagedlist.8.1.0.nupkg.sha512",
+    "C:\\Users\\Emiliano\\.nuget\\packages\\x.pagedlist.mvc.core\\8.1.0\\x.pagedlist.mvc.core.8.1.0.nupkg.sha512"
   ],
   "logs": []
 }

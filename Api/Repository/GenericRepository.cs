@@ -5,7 +5,9 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Api.Data;
 using Api.IRepository;
+using Api.Models;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace Api.Repository
 {
@@ -79,6 +81,19 @@ namespace Api.Repository
         {
             _db.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public async Task<IPagedList<T>> GetPagedList(RequestParams requestParams, List<string> includes = null)
+        {
+            IQueryable<T> query = _db;
+            if (includes != null)
+            {
+                foreach (var includesPropery in includes)
+                {
+                    query = query.Include(includesPropery);
+                }
+            }
+            return await query.AsNoTracking().ToPagedListAsync(requestParams.PageNumber,requestParams.PageSize);
         }
     }
 }
